@@ -8,21 +8,9 @@
   <p><a href="https://www.86886.wang" target="_blank">演示站</a></p>
 </div>
 
-## VueBlog
+## xkxt
 
 VueBlog是一个轻量级的博客应用
-
-### 技术栈
-
-- 前端：Nuxt.js + Vuex
-- 后端: Mongoose + Koa
-
-### 功能特性
-
-- 支持服务端渲染
-- PWA渐进式web应用
-- 轻量级Markdown编辑器
-- 标签、归档、搜索草稿箱功能
 
 ### 本地运行
 
@@ -46,7 +34,7 @@ npm start
 
 全局配置文件`/server/config/index.js`
 
-默认用户名：q，默认密码：q  
+默认用户名：q，默认密码：q
 
 ```javascript
 export default {
@@ -84,4 +72,4 @@ export default {
 
 ### 开源协议
 
-[GPL-3.0](https://choosealicense.com/licenses/gpl-3.0/)  
+[GPL-3.0](https://choosealicense.com/licenses/gpl-3.0/)
