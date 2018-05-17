@@ -6,7 +6,9 @@ import formidable from 'formidable'
 const Article = mongoose.model('Article')
 
 export const getArticles = async(ctx, next) => {
-  let { page = 1, limit = 15 } = ctx.params
+  let { page = 1, limit = 15 } =
+
+
   page = Number((page - 1) * limit) || 0
   limit = Number(limit) || 15
 
