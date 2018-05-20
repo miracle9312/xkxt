@@ -1,12 +1,11 @@
 export default {
   user: {
-    role: 'superAdmin',
+    role: 100,
     username: 'q',
     password: 'q',
     email: 'qq22337383@gmail.com',
     nickname: 'VueBlog',
-    motto: 'Never too old to learn',
-    avatar: 'avatar.png'
+    motto: 'Never too old to learn'
   },
   jwt: {
     secret: 'vueblog'

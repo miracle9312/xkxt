@@ -18,7 +18,7 @@ mongoose.connection
     let userInfo = config.user
     userInfo.password = md5(userInfo.password)
 
-    let user = await User.findOne({ role: 'superAdmin' }).exec()
+    let user = await User.findOne({ role: 100 }).exec()
     if (!user) {
       user = new User(userInfo)
       await user.save()

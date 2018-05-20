@@ -3,15 +3,15 @@ const Schema = mongoose.Schema
 
 const UserSchema = new Schema({
   role: {
-    type: String,
-    default: 'user'
+    type: Number,
+    default: 0
   },
   username: String,
   password: String,
   email: String,
   nickname: String,
-  motto: String,
-  avatar: String,
+  /*motto: String,
+  avatar: String,*/
   createdAt: {
     type: Date,
     default: Date.now
@@ -30,6 +30,8 @@ UserSchema.options.toJSON = {
     ret.id = ret._id
     delete ret._id
     delete ret.id
+
+
     delete ret.password
     delete ret.username
   }

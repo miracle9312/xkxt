@@ -5,8 +5,10 @@ field | type
 id | schema.object.id[key]
 username | string
 password | string
-type | 0(student)\|\|1(teacher)\|\|100(andmin)
-name | string
+role | 0(student)\|\|1(teacher)\|\|100(andmin)
+nickname | string
+createdAt | date
+updatedAt | date
 
 ## student
 
@@ -37,19 +39,13 @@ name | string
 time | integer
 subject_team | string
 
-## major
-field | type
---- | ---
-major_code | integer
-major_name | string
-subject_team | integer
-
 ## subject_team
 
 field | type
 --- | ---
 team_code | integer[key]
 team_name | string
+major | integer
 
 ## student_subject_rel
 
