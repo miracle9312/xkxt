@@ -24,6 +24,8 @@ const ergou = new LocalStudent({name: 'ergou', age: 1, code: 'M123'});
 
 const tony = new ForeignStudent({name: 'tony', age: 1, salary: 100});
 
+
+
 Student.find({}, async (err, docs)=>{
   docs.map((doc)=>{
     doc.remove();
