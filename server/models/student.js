@@ -14,8 +14,18 @@ const StudentSchema = new Schema({
   subject: {
     type: Schema.Types.ObjectId,
     ref: 'Subject'
-  }
+  },
+  connnections: [{
+    kind: String,
+    item: {type:Schema.Types.ObjectId, refPath: 'connections.kind'}
+  }]
 },{discriminatorKey: 'kind'});
+
+const TeacherSchema = new Schema({
+  name: String,
+  title: String,
+  age: Number
+});
 
 const Student = mongoose.model('Student', StudentSchema);
 const LocalSchema = new Schema({ code: String });
@@ -85,7 +95,45 @@ Subject.find({},(err, docs)=>{
 Subject.findOne({name: 'math'})
   .populate('student')
   .exec((err, doc) => {
-    console.log('========populate=======', doc.student);
+    console.log('========populate normal=======', doc.student);
   });
 
-Student.findOne()
+Student.findOne();
+
+const Teacher = mongoose.model('Teacher', TeacherSchema);
+const xiaoming = new Student({
+  name: 'xiaoming',
+  age: 18
+});
+
+xiaoming.save((err, doc) => {
+  const xiaohong = new Student({
+    name: 'xiaohong',
+    age: 18
+  });
+  const jiaoshou = new Teacher({
+    name: 'jiaoshou',
+    title: 'professor',
+    age: 45
+  });
+
+  async.map([xiaohong, jiaoshou], (item, callback)=>{
+    item.save((err, doc)=>{
+      callback(err, doc);
+    })
+  }, (err, docs)=>{
+    docs.map((doc) => {
+      if(doc.connections){
+        xiaoming.connnections.push({kind:'Student', item: doc._id})
+      }
+
+      xiaoming.connnections.push({kind: 'Teacher', item: doc._id})
+    });
+  })
+});
+
+Student.findOne({name: 'xiaoming'}).
+  populate('connection.item')
+  .exec((err, doc)=>{
+    console.log('==========populate dynamic===========', doc);
+  });
